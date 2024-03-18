@@ -51,10 +51,21 @@ library("ggplot2")
 pessoas.idades <- c(15,14,16)
 pessoas.pontuacao <- c(5,9,5)
 
+?plot
+
 plotIdadePontuacao <- function(idades,pontuacoes){
+  if (length(idades) != length(pontuacoes)) {
+    stop("Os vetores de idades e pontuações devem ter o mesmo comprimento.")
+  }
   pessoas <- list(idades, pontuacoes)
-  ggplot(pessoas, aes(idades)) + geom_dotplot()
+  
+  cores <- ifelse(idades < 18, "red", "blue")
+  
+  plot(idades, pontuacoes, col = cores, pch = 16, main = "Relação Idade vs. Pontuação",
+       xlab = "Idade", ylab = "Pontuação")
+  legend("topright", legend = c("Menor de idade", "Maior de idade"), col = c("red", "blue"), pch = 16)
 }
+
 
 plotIdadePontuacao(pessoas.idades, pessoas.pontuacao)
 
