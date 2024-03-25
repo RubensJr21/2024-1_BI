@@ -42,13 +42,39 @@ dados <- data.frame(
 # Filtre as linhas para incluir apenas pessoas com idade inferior a 30 anos,
 # depois ordene o resultado pelo salário em ordem decrescente.
 
-dados.filtrados <- filter(dados, Idade < 30)
-head(dados.filtrados)
+dados.filtrados <- dados %>%
+  filter(Idade < 30) %>%
+  arrange(desc(Salario)) # orderby, quando for decrescente precisa passar a função desc(n), quando for crescente não precisa por nada
+
+print(dados.filtrados)
+
 
 # EXERCÍCIO 4:
 # Usando o mesmo data frame dados, selecione apenas as colunas "Nome" e "Salario",
 # e crie uma nova coluna chamada "Salario_Ajustado" que seja o dobro do salário original.
 
+# Minha solução
+dados_2 <- dados[c("Nome", "Salario")]
+dados_2$Salario_Ajustado <- dados_2$Salario * 2
+
+#Solução do professor
+resultado_ex2 <- dados %>%
+  select(Nome, Salario) %>%
+  mutate(Salario_Ajustado = Salario * 2)
+
+print(dados_2)
+print(resultado_ex2)
+
 # EXERCÍCIO 5:
 # Usando o mesmo data frame dados, agrupe os dados pelo departamento e calcule a média e a
 # soma dos salários em cada departamento.
+
+# Solução do professor
+resultado_ex3 <- dados %>%
+  group_by(Departamento) %>%
+  summarize(Media_Salario = mean(Salario), # Semelhante ao having, agrupamento condicional
+            Soma_Salario = sum(Salario))
+
+?summarise
+
+print(resultado_ex3)
