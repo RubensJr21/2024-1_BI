@@ -1,7 +1,7 @@
 # Você deverá levantar 3 questões relevantes
 
 
-#Seu relatório deverá contemplar os tópicos:
+#  Seu relatório deverá contemplar os tópicos:
 #  definição do problema,
 #  obtenção dos dados,
 #  transformação dos dados obtidos,
@@ -32,8 +32,8 @@
 # clicar nele.
 
 # Em seguida, é exibida uma lista de bases separadas por temas.
-# Vamos clicar na base "Viagens a Serviço", e depois no arquivo
-# "Viagens a serviço".
+# Vamos clicar na base "Emendas parlamentares", e depois no arquivo
+# "Emendas parlamentares".
 
 # Na tela que se abre, há a opção de escolher qual exercício, ou seja,
 # o ano que você deseja extrair os dados de viagens realizadas a 
@@ -52,6 +52,16 @@
 
 # Após fazer o download dos dados, é necessário carregá-los:
 
+# Carregando os dados:
+emendas <- read.csv(
+  file = "./receitas.csv",
+  sep = ';',
+  dec = ',',
+  fileEncoding='utf-8',
+  check.names=F
+)
+
+head(viagens)
 
 ## Transformação dos dados obtidos (dar sentido aos dados, pois às vezes vem um -1 sem sentido, datas em formatos diferentes)
 
